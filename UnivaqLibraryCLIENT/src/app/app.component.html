@@ -1,0 +1,32 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu *ngIf="(utente | async) as utente">
+      <ion-header>
+        <ion-toolbar color="secondary" class="user-profile">
+          <ion-item>
+            <ion-label>
+              <ion-text color="light">
+                <h1><strong> {{utente.cognome + ' ' + utente.nome}}</strong></h1>
+              </ion-text>
+              <ion-menu-toggle auto-hide="false">
+                <ion-button fill="solid" size="small" color="light" (click)="logout()">
+                  <ion-icon name="log-out"></ion-icon>Logout</ion-button>
+              </ion-menu-toggle>
+            </ion-label>
+          </ion-item>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="bg-profile">
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let opzioniMenu of menu">
+            <ion-item [routerLink]="[opzioniMenu.url]" (click)="openPage(opzioniMenu.url)" detail="true">
+              <ion-icon slot="start" [name]="opzioniMenu.icon" color="black"></ion-icon>
+              <ion-label>{{opzioniMenu.title}}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
