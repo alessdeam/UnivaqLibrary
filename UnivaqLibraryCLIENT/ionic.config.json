@@ -1,0 +1,7 @@
+{
+  "name": "Univaq Library",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
